@@ -74,7 +74,7 @@ $("#chuong").innerHTML = D.chuong.map(c => `<article class="chuong${c.tuonglai?"
   <div class="dau">
     <div class="so-la-ma" aria-hidden="true">${esc(c.lama)}</div>
     <div><p class="nk">${esc(c.nk)} · ${esc(c.years)}</p><h3>${esc(c.title)}</h3></div>
-    ${c.chunhiem ? `<div class="chan"><div><b>${esc(c.chunhiem.name)}</b><small>${esc(c.chunhiem.role)}</small></div>${c.chunhiem.imgs.map(u=>`<img src="${u}" alt="Chân dung Chủ nhiệm" loading="lazy">`).join("")}</div>` : ""}
+    ${c.chunhiem ? `<div class="chan"><div><b>${esc(c.chunhiem.name.split(" · ").map(n => "Anh " + n).join(" · "))}</b><small>${esc(c.chunhiem.role)}</small></div>${c.chunhiem.imgs.map(u=>`<img src="${u}" alt="Chân dung Chủ nhiệm" loading="lazy">`).join("")}</div>` : ""}
   </div>
   <div class="than">
     <div class="ke"><p class="lead">${esc(c.lead)}</p>
