@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sử ký YBA Gia Định</title>
+<meta name="description" content="Sử ký Chi hội Gia Định – Hội Doanh nhân Trẻ TP.HCM, 2009–2026: các nhiệm kỳ, những người gánh vác, mạch truyền thống và album ảnh tư liệu.">
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav" id="nav" aria-label="Mục lục">
+  <a class="logo" href="#dau"><img src="assets/logo.png" alt="">YBA Gia Định</a>
+  <button class="menu" aria-expanded="false" aria-controls="muc">Mục lục</button>
+  <ul id="muc">
+    <li><a href="#mai-nha">Mái nhà chung</a></li>
+    <li><a href="#bien-nien">Biên niên</a></li>
+    <li><a href="#ganh-vac">Người gánh vác</a></li>
+    <li><a href="#truyen-thong">Truyền thống</a></li>
+    <li><a href="#dong-thoi-gian">Dòng thời gian</a></li>
+    <li><a href="#album">Album</a></li>
+    <li><a href="#nguon">Nguồn</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="dau">
+  <div class="kham" id="kham" aria-hidden="true"></div>
+  <div class="noi">
+    <h1 class="tieude"><span>Sử ký Chi hội Doanh nhân Trẻ</span>Gia Định</h1>
+    <p class="phu" id="hero-phu"></p>
+    <div class="moc" id="hero-moc"></div>
+  </div>
+</header>
+
+<main>
+<section class="phan" id="mai-nha">
+  <div class="wrap">
+    <h2>Một mái nhà chung</h2>
+    <div class="modau">
+      <div class="van" id="modau-van"></div>
+      <aside>
+        <div class="diaban">
+          <h3>Địa bàn hội viên</h3>
+          <ul id="diaban"></ul>
+          <p style="font-size:13.5px;color:var(--muc-nhat);margin:14px 0 0" id="diaban-note"></p>
+        </div>
+      </aside>
+    </div>
+    <div class="trucot" id="trucot"></div>
+  </div>
+</section>
+
+<section class="phan toi" id="con-so">
+  <div class="wrap">
+    <h2>Dấu ấn qua những con số</h2>
+    <p class="dan">Mỗi con số gắn với năm và tài liệu công bố của nó, để người đọc thấy được quy mô của từng giai đoạn.</p>
+    <div class="so" id="so"></div>
+  </div>
+</section>
+
+<section class="phan" id="bien-nien">
+  <div class="wrap">
+    <h2>Biên niên qua các nhiệm kỳ</h2>
+    <p class="dan">Bảy chặng đường, từ ngày khởi dựng năm 2009 đến lễ ra mắt Ban Điều hành nhiệm kỳ I cuối năm 2026.</p>
+    <div class="biennien">
+      <nav class="rail" id="rail" aria-label="Chọn nhiệm kỳ"></nav>
+      <div id="chuong"></div>
+    </div>
+  </div>
+</section>
+
+<section class="phan toi" id="ganh-vac">
+  <div class="wrap">
+    <h2>Những người gánh vác</h2>
+    <p class="dan">Bảy Chủ nhiệm, sáu nhiệm kỳ, và hơn năm mươi thành viên Ban Chủ nhiệm đã thay nhau giữ lửa cho ngôi nhà chung.</p>
+    <div class="ganhvac" id="chunhiem"></div>
+    <div class="bcn" id="bcn"></div>
+  </div>
+</section>
+
+<section class="phan" id="truyen-thong">
+  <div class="wrap">
+    <h2>Mạch truyền thống</h2>
+    <p class="dan">Những chương trình được lặp lại qua nhiều nhiệm kỳ, trở thành nếp sinh hoạt riêng của Gia Định.</p>
+    <div class="truyenthong" id="tt"></div>
+  </div>
+</section>
+
+<section class="phan" id="dong-thoi-gian" style="background:var(--giay-2)">
+  <div class="wrap">
+    <h2>Dòng thời gian</h2>
+    <p class="dan" id="dtg-dan"></p>
+    <div class="loc" id="dtg-loc">
+      <label class="sr" for="dtg-tim">Tìm sự kiện</label>
+      <input id="dtg-tim" type="search" placeholder="Tìm sự kiện, địa điểm, chủ đề…">
+      <label class="sr" for="dtg-nk">Nhiệm kỳ</label>
+      <select id="dtg-nk"><option value="">Mọi nhiệm kỳ</option></select>
+    </div>
+    <div class="loc" id="dtg-chude"></div>
+    <ol class="dtg" id="dtg"></ol>
+  </div>
+</section>
+
+<section class="phan toi" id="album">
+  <div class="wrap">
+    <div class="album-hd"><h2>Album tư liệu</h2><span class="dem" id="album-dem"></span></div>
+    <p class="dan">Ảnh tập thể từ báo cáo, kho OneDrive và fanpage của Chi hội. Chọn một sự kiện, một năm hoặc một chủ đề; bấm ảnh để xem lớn và trình chiếu.</p>
+    <div class="chude-dai" id="album-su-kien" aria-label="Sự kiện tiêu biểu"></div>
+    <div class="loc">
+      <label class="sr" for="album-tim">Tìm ảnh</label>
+      <input id="album-tim" type="search" placeholder="Tìm theo sự kiện, mô tả…" style="background:transparent;color:#fff;border-color:rgba(210,165,74,.4)">
+      <label class="sr" for="album-nam">Năm</label>
+      <select id="album-nam" style="background:var(--son-vua);color:#fff;border-color:rgba(210,165,74,.4)"><option value="">Mọi năm</option></select>
+    </div>
+    <div class="loc" id="album-chude"></div>
+    <div class="luoi" id="luoi"></div>
+    <button class="them" id="them" hidden>Xem thêm ảnh</button>
+  </div>
+</section>
+
+<section class="phan" id="nguon">
+  <div class="wrap">
+    <h2>Nguồn tư liệu</h2>
+    <p class="dan" id="nguon-dan"></p>
+    <div class="nguon" id="nguon-ds"></div>
+    <div class="luuy" id="luuy"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>YBA Gia Định · 2009 – 2026</b>
+    <p id="chan-trang"></p>
+  </div>
+</footer>
+
+<div class="nhac" id="nhac">
+  <button id="nhac-nut" aria-label="Phát bài Giữ Ấm Đường Xa">▶</button>
+  <div><b>Giữ Ấm Đường Xa</b><small>Bài hát của Chi hội</small></div>
+  <div class="song" aria-hidden="true"><i></i><i></i><i></i></div>
+  <audio id="audio" src="assets/Giu_Am_Duong_Xa.mp3" preload="none" loop></audio>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Xem ảnh">
+  <figure><img id="lb-img" alt=""></figure>
+  <div class="cap" id="lb-cap"></div>
+  <button class="nut dong" id="lb-dong" aria-label="Đóng">✕</button>
+  <button class="nut chieu" id="lb-chieu">Trình chiếu</button>
+  <button class="nut truoc" id="lb-truoc" aria-label="Ảnh trước">‹</button>
+  <button class="nut sau" id="lb-sau" aria-label="Ảnh sau">›</button>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
