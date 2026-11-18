@@ -229,13 +229,13 @@ section{scroll-margin-top:60px}
 .dauan .mui{color:var(--son);font-size:18px;line-height:1;align-self:center}
 .dauan .so-anh{display:inline-block;margin-top:3px;font-style:normal;font-size:11.5px;color:var(--son);border:1px solid rgba(142,27,23,.3);border-radius:10px;padding:0 7px}
 .dauan li:has(.moc-btn){display:block}
-.moc{position:fixed;inset:0;z-index:55;background:rgba(18,6,5,.72);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:5vh 16px}
-.moc.mo{display:flex}
+.mocdlg{position:fixed;inset:0;z-index:55;background:rgba(18,6,5,.72);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:5vh 16px}
+.mocdlg.mo{display:flex}
 .moc-khung{position:relative;background:var(--giay);max-width:920px;width:100%;padding:34px 36px 30px;border-top:4px solid var(--son);box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .moc-dong{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--vien);background:#fff;font-size:16px}
 .moc-nk{margin:0 0 6px;font-size:13px;color:var(--muc-nhat)}
-.moc h3{font:500 clamp(26px,3vw,36px)/1.15 var(--serif);margin:0 0 14px;padding-right:40px}
-.moc h3 time{display:block;font:600 14px var(--sans);color:var(--son);margin-bottom:6px}
+.mocdlg h3{font:500 clamp(26px,3vw,36px)/1.15 var(--serif);margin:0 0 14px;padding-right:40px}
+.mocdlg h3 time{display:block;font:600 14px var(--sans);color:var(--son);margin-bottom:6px}
 .moc-text{font:400 19px/1.65 var(--serif);max-width:68ch;margin:0 0 20px}
 .moc-anh{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
 .moc-anh button{border:0;padding:0;background:var(--giay-2);overflow:hidden}
