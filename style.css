@@ -222,6 +222,30 @@ section{scroll-margin-top:60px}
 .chude-dai span{display:block;padding:8px 10px;font-size:13.5px;line-height:1.3}
 .chude-dai small{display:block;color:#b59d7c}
 
+/* ---------- dấu mốc bấm được + khung chi tiết ---------- */
+.dauan .moc-btn{all:unset;box-sizing:border-box;display:grid;grid-template-columns:92px 1fr 14px;gap:12px;width:100%;cursor:pointer;padding:0;border-radius:2px}
+.dauan .moc-btn:hover .tl{color:var(--son)}
+.dauan .moc-btn:focus-visible{outline:3px solid var(--vang);outline-offset:3px}
+.dauan .mui{color:var(--son);font-size:18px;line-height:1;align-self:center}
+.dauan .so-anh{display:inline-block;margin-top:3px;font-style:normal;font-size:11.5px;color:var(--son);border:1px solid rgba(142,27,23,.3);border-radius:10px;padding:0 7px}
+.dauan li:has(.moc-btn){display:block}
+.moc{position:fixed;inset:0;z-index:55;background:rgba(18,6,5,.72);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:5vh 16px}
+.moc.mo{display:flex}
+.moc-khung{position:relative;background:var(--giay);max-width:920px;width:100%;padding:34px 36px 30px;border-top:4px solid var(--son);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.moc-dong{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--vien);background:#fff;font-size:16px}
+.moc-nk{margin:0 0 6px;font-size:13px;color:var(--muc-nhat)}
+.moc h3{font:500 clamp(26px,3vw,36px)/1.15 var(--serif);margin:0 0 14px;padding-right:40px}
+.moc h3 time{display:block;font:600 14px var(--sans);color:var(--son);margin-bottom:6px}
+.moc-text{font:400 19px/1.65 var(--serif);max-width:68ch;margin:0 0 20px}
+.moc-anh{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.moc-anh button{border:0;padding:0;background:var(--giay-2);overflow:hidden}
+.moc-anh img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .4s}
+.moc-anh button:hover img{transform:scale(1.04)}
+.moc-trong{color:var(--muc-nhat);font-size:14px;border-left:2px solid var(--vien);padding-left:12px}
+.moc-nguon{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;padding-top:14px;border-top:1px solid var(--vien);font-size:13.5px;color:var(--muc-nhat)}
+.moc-nguon a{color:var(--son)}
+@media (max-width:640px){.moc-khung{padding:26px 18px 22px}.dauan .moc-btn{grid-template-columns:80px 1fr 12px}}
+
 /* ---------- lightbox ---------- */
 .lb{position:fixed;inset:0;z-index:60;background:rgba(18,6,5,.96);display:none;grid-template-rows:1fr auto;color:#f1e4cc}
 .lb.mo{display:grid}

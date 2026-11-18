@@ -47,7 +47,7 @@ function openLb(list, id){
   lbList = list; lbI = Math.max(0, list.indexOf(id)); lastFocus = document.activeElement;
   lb.classList.add("mo"); document.body.style.overflow = "hidden"; lbShow(); $("#lb-dong").focus();
 }
-function closeLb(){ lb.classList.remove("mo"); document.body.style.overflow = ""; stopShow(); lastFocus && lastFocus.focus(); }
+function closeLb(){ lb.classList.remove("mo"); document.body.style.overflow = mocDlg && mocDlg.classList.contains("mo") ? "hidden" : ""; stopShow(); lastFocus && lastFocus.focus(); }
 const step = d => { lbI = (lbI + d + lbList.length) % lbList.length; lbShow(); };
 function stopShow(){ clearInterval(lbTimer); lbTimer = null; $("#lb-chieu").textContent = "Trình chiếu"; }
 $("#lb-dong").onclick = closeLb; $("#lb-truoc").onclick = () => step(-1); $("#lb-sau").onclick = () => step(1);
@@ -55,7 +55,7 @@ $("#lb-chieu").onclick = () => { if (lbTimer) return stopShow(); lbTimer = setIn
 lb.addEventListener("click", e => { if (e.target === lb || e.target.tagName === "FIGURE") closeLb(); });
 addEventListener("keydown", e => {
   if (!lb.classList.contains("mo")) return;
-  if (e.key === "Escape") closeLb(); else if (e.key === "ArrowRight") step(1); else if (e.key === "ArrowLeft") step(-1);
+  if (e.key === "Escape") { e.stopImmediatePropagation(); closeLb(); } else if (e.key === "ArrowRight") step(1); else if (e.key === "ArrowLeft") step(-1);
 });
 let tx = null;
 lb.addEventListener("touchstart", e => tx = e.touches[0].clientX, {passive:true});
@@ -83,7 +83,7 @@ $("#chuong").innerHTML = D.chuong.map(c => `<article class="chuong${c.tuonglai?"
       ${ids.length ? `<div class="dai" data-ds="${ids.join(",")}">${ids.map(id => { const p = P[id];
         return `<figure><button data-anh="${id}" aria-label="Xem ảnh: ${esc(p.cap)}">${img(p)}</button><figcaption>${esc(capOf(p))}</figcaption></figure>`; }).join("")}</div>` : ""}</section>`; }).join("")}
     </div>
-    <aside><ol class="dauan" aria-label="Dấu mốc">${c.dauan.map(d=>`<li><time>${esc(d.dl)}</time><span class="tl">${esc(d.title)}${d.note?`<small>${esc(d.note)}</small>`:""}</span></li>`).join("")}</ol>
+    <aside><ol class="dauan" aria-label="Dấu mốc">${c.dauan.map((d,i)=>{ const co = d.text || (d.anh&&d.anh.length) || (d.links&&d.links.length); const inner = `<time>${esc(d.dl)}</time><span class="tl">${esc(d.title)}${d.note?`<small>${esc(d.note)}</small>`:""}${(d.anh&&d.anh.length)?`<em class="so-anh">${d.anh.length} ảnh</em>`:""}</span>`; return co ? `<li><button class="moc-btn" data-moc="${c.id}:${i}" aria-haspopup="dialog">${inner}<span class="mui" aria-hidden="true">›</span></button></li>` : `<li>${inner}</li>`; }).join("")}</ol>
     ${c.ghichu ? `<p class="ghichu">${esc(c.ghichu)}</p>` : ""}</aside>
   </div>
 </article>`).join("");
@@ -92,6 +92,28 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) railLinks.forEach(a => a.classList.toggle("on", a.hash === "#" + e.target.id));
 }), {rootMargin:"-40% 0px -55% 0px"});
 document.querySelectorAll(".chuong").forEach(c => io.observe(c));
+
+/* ---------- chi tiết dấu mốc ---------- */
+const mocDlg = document.getElementById("moc");
+let mocLast = null;
+function openMoc(key){
+  const [cid, i] = key.split(":"); const c = D.chuong.find(x => x.id === cid); const d = c.dauan[+i];
+  const ids = (d.anh || []).filter(id => P[id]);
+  mocDlg.querySelector(".moc-noi").innerHTML = `
+    <p class="moc-nk">${esc(c.nk)} · ${esc(c.years)}</p>
+    <h3><time>${esc(d.dl)}</time>${esc(d.title)}</h3>
+    ${d.text ? `<p class="moc-text">${esc(d.text)}</p>` : ""}
+    ${ids.length ? `<div class="moc-anh" data-ds="${ids.join(",")}">${ids.map(id => { const p = P[id]; return `<button data-anh="${id}" aria-label="Xem ảnh: ${esc(p.cap)}">${img(p)}</button>`; }).join("")}</div>`
+                 : `<p class="moc-trong">Chưa có ảnh tư liệu cho mốc này trong kho.</p>`}
+    <div class="moc-nguon">${d.note ? `<span>Nguồn: ${esc(d.note)}</span>` : ""}${(d.links||[]).map(l => `<a href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)} ↗</a>`).join("")}</div>`;
+  mocLast = document.activeElement; mocDlg.classList.add("mo"); document.body.style.overflow = "hidden";
+  mocDlg.querySelector(".moc-dong").focus();
+}
+function closeMoc(){ mocDlg.classList.remove("mo"); document.body.style.overflow = ""; mocLast && mocLast.focus(); }
+document.addEventListener("click", e => { const b = e.target.closest("[data-moc]"); if (b) openMoc(b.dataset.moc); });
+mocDlg.querySelector(".moc-dong").onclick = closeMoc;
+mocDlg.addEventListener("click", e => { if (e.target === mocDlg) closeMoc(); });
+addEventListener("keydown", e => { if (e.key === "Escape" && mocDlg.classList.contains("mo") && !lb.classList.contains("mo")) closeMoc(); });
 
 /* ---------- người gánh vác ---------- */
 $("#chunhiem").innerHTML = D.chunhiem.map(c => `<figure><img src="${c.img}" alt="Chân dung ${esc(c.name)}" loading="lazy"><figcaption><b>${esc(c.name)}</b><span>${esc(c.nk)}</span><em>${esc(c.years)}</em></figcaption></figure>`).join("");
